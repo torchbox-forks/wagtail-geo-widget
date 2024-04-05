@@ -256,6 +256,11 @@ if WAGTAIL_VERSION >= (6, 0):
                 "translations": translations,
             }
 
+            print("==============================")
+            print("VALUE_DATA", self.value_data)
+            print("TYPE", type(self.value_data))
+            print("==============================")
+
             if self.value_data and isinstance(self.value_data, str):
                 result = geosgeometry_str_to_struct(self.value_data)
                 if result:
