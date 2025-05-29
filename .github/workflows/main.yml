@@ -17,7 +17,7 @@ jobs:
             django-version: "5.1"
     services:
       postgres:
-        image: postgis/postgis:13-3.4
+        image: postgis/postgis:14-3.5
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
