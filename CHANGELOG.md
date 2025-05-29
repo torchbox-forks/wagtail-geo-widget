@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Added
 ### Changed
+- Updated CI test matrix for Wagtail 7.0 (@jakubmastalerz)
 ### Fixed
 ### Removed
 
