@@ -8,13 +8,38 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
-        wagtail-version: ["6.3", "7.0", "7.1", "7.2"]
-        django-version: ["4.2", "5.1", "5.2"]
+        wagtail-version: ["7.0", "7.2", "7.3", "7.4"]
+        django-version: ["4.2", "5.1", "5.2", "6.0"]
         exclude:
-          - python-version: "3.13"
+          # Django 4.2 does not support Python 3.14
+          - python-version: "3.14"
             django-version: "4.2"
-          - python-version: "3.13"
-            django-version: "5.0"
+          # Django 5.1 does not support Python 3.14
+          - python-version: "3.14"
+            django-version: "5.1"
+          # Django 6.0 requires Python 3.12+
+          - python-version: "3.10"
+            django-version: "6.0"
+          - python-version: "3.11"
+            django-version: "6.0"
+          # Wagtail 7.0 supports Django 4.2, 5.1, 5.2 and Python 3.10-3.13
+          - wagtail-version: "7.0"
+            django-version: "6.0"
+          - wagtail-version: "7.0"
+            python-version: "3.14"
+          # Wagtail 7.2 supports Django 4.2, 5.1, 5.2 and Python 3.10-3.13
+          - wagtail-version: "7.2"
+            django-version: "6.0"
+          - wagtail-version: "7.2"
+            python-version: "3.14"
+          # Wagtail 7.3 supports Django 4.2, 5.2, 6.0
+          - wagtail-version: "7.3"
+            django-version: "5.1"
+          # Wagtail 7.4 supports Django 5.2, 6.0
+          - wagtail-version: "7.4"
+            django-version: "4.2"
+          - wagtail-version: "7.4"
+            django-version: "5.1"
     services:
       postgres:
         image: postgis/postgis:15-3.4
